@@ -2,7 +2,9 @@ set :protection, except: :session_hijacking
 
 get '/' do
   # Look in app/views/index.erb
+  @user = User.all
   @post = Post.all
+
   erb :index
 end
 

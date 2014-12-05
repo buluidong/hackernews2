@@ -1,4 +1,5 @@
-<table border='0' cellpadding='0' cellspacing='0' width='85%' stype='padding:2px' bgcolor='#ff6600'>
+<div class='container'>
+<table border='0' cellpadding='0' cellspacing='0' width='100%' stype='padding:2px' bgcolor='#ff6600'>
   <tbody>
     <tr>
       <td style="line-height:15pt; height:10px;">
@@ -8,7 +9,7 @@
           <a href='/comment'>comment</a> |
         </span>
       </td>
-      <td stype='text-align:right;padding-right:4px;'>
+      <td stype='text-align:right;' style='width:100px;'>
         <% if session[:username] %>
           <%= session[:username] %>:
           <a href='/logout'>logout</a>
@@ -24,8 +25,16 @@
   <ol type="1" size='12'>
     <%@post.each do |p|%>
     <li>
+      <div >
+      <% if p.post_votes.find_by_user_id(session[:user_id]) %>
+           <a id='vote_down' href='/post/<%=p.id%>/downvote'>v</a>
+          <%else%>
+           <a id='vote_up' href='/post/<%=p.id%>/upvote'>^</a>
+        <%end%>
       <a href=<%= p.url %>><%= p.title %><br></a>
+      </div>
       <div id ='title_comment'>
+         <%= p.post_votes.count %> votes
         by
       <a href='/user/<%= p.user.id %>'>
         <%= p.user.username%>
@@ -37,4 +46,5 @@
     <div>
     <%end%>
   </ol>
+</div>
 </div>
