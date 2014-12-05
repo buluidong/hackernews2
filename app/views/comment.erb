@@ -20,21 +20,15 @@
   </tbody>
 </table>
 
-<div>
-  <ol type="1" size='12'>
-    <%@post.each do |p|%>
-    <li>
-      <a href=<%= p.url %>><%= p.title %><br></a>
-      <div id ='title_comment'>
-        by
-      <a href='/user/<%= p.user.id %>'>
-        <%= p.user.username%>
-      </a>
-      <a href="/post/<%= p.id%>">
-        <%=p.comments.count %> comments
-      </a>
-    </li>
-    <div>
+  <h3><%=@post.title%></h3>
+  <form name='commentpost' action='/post/<%=@post.id%>/comment' method='post'>
+    <textarea rows='5' cols='50' name='comment'></textarea><br><br>
+    <input type='submit' value='add comment'>
+  </form><br><br><br><br>
+
+  <div id='title_comment'>
+    <%@comment.each do |c|%>
+      <a href='/user/<%=c.user.id%>'><%=c.user.username%></a><br>
+      <p id='comment_body'><%=c.body%></p>
     <%end%>
-  </ol>
-</div>
+  </div>

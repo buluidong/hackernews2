@@ -20,21 +20,33 @@
   </tbody>
 </table>
 
-<div>
-  <ol type="1" size='12'>
-    <%@post.each do |p|%>
-    <li>
-      <a href=<%= p.url %>><%= p.title %><br></a>
-      <div id ='title_comment'>
-        by
-      <a href='/user/<%= p.user.id %>'>
-        <%= p.user.username%>
-      </a>
-      <a href="/post/<%= p.id%>">
-        <%=p.comments.count %> comments
-      </a>
-    </li>
-    <div>
-    <%end%>
-  </ol>
-</div>
+<table id='profile'>
+  <tr>
+    <td>User: </td>
+    <td><%= @user.username%></td>
+  </tr>
+  <tr>
+    <td>created: </td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>karma: </td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>avg: </td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>about: </td>
+    <td></td>
+  </tr>
+  <tr>
+    <td> </td>
+    <td><a href='/submitted/<%= @user.id %>'>submissions</a></td>
+  </tr>
+  <tr>
+    <td> </td>
+    <td><a href='/threads/<%= @user.id %>'>comments</a></td>
+  </tr>
+</table>

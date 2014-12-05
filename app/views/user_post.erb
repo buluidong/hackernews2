@@ -19,22 +19,16 @@
     </tr>
   </tbody>
 </table>
+<br>
 
 <div>
-  <ol type="1" size='12'>
-    <%@post.each do |p|%>
-    <li>
-      <a href=<%= p.url %>><%= p.title %><br></a>
+    <%@posts.each do |p|%>
       <div id ='title_comment'>
-        by
       <a href='/user/<%= p.user.id %>'>
         <%= p.user.username%>
       </a>
-      <a href="/post/<%= p.id%>">
-        <%=p.comments.count %> comments
-      </a>
-    </li>
-    <div>
+        <%=p.created_at.strftime("%d %b. %Y") %>
+    </div>
+      <a href=<%= p.url %>><%= p.title %><br></a>
     <%end%>
-  </ol>
 </div>

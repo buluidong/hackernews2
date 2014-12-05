@@ -4,8 +4,6 @@
       <td style="line-height:15pt; height:10px;">
         <span class='pagetop'>
           <a href='/'><b>Hacker News</b></a>
-          <a href='/post'>submit</a>  |
-          <a href='/comment'>comment</a> |
         </span>
       </td>
       <td stype='text-align:right;padding-right:4px;'>
@@ -19,22 +17,11 @@
     </tr>
   </tbody>
 </table>
-
 <div>
-  <ol type="1" size='12'>
-    <%@post.each do |p|%>
-    <li>
-      <a href=<%= p.url %>><%= p.title %><br></a>
-      <div id ='title_comment'>
-        by
-      <a href='/user/<%= p.user.id %>'>
-        <%= p.user.username%>
-      </a>
-      <a href="/post/<%= p.id%>">
-        <%=p.comments.count %> comments
-      </a>
-    </li>
-    <div>
-    <%end%>
-  </ol>
+  <h3>Submit</h3>
+  <form name='submit' action='/post' method='post'>
+    title: <input type='text' name='post[title]'><br><br>
+    url:   <input type='text' name='post[url]'><br><br>
+    <input type='submit' value='submit'>
+  </form>
 </div>
